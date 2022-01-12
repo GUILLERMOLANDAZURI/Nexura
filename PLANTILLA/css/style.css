@@ -1388,7 +1388,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 }
 .top-navigation .navbar-nav .dropdown-menu > .active > a {
   background: white;
-  color: #1ab394;
+  color: #941c23;
   font-weight: bold;
 }
 .white-bg .navbar-fixed-top,
@@ -1405,14 +1405,14 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 .top-navigation .nav > li a:hover,
 .top-navigation .nav > li a:focus {
   background: #fff;
-  color: #1ab394;
+  color: #941c23;
 }
 .top-navigation .navbar .nav > li.active {
   background: #fff;
   border: none;
 }
 .top-navigation .nav > li.active > a {
-  color: #1ab394;
+  color: #941c23;
 }
 .top-navigation .navbar-right {
   margin-right: 10px;
@@ -1429,7 +1429,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   margin-top: 0;
 }
 .top-navigation .navbar-brand {
-  background: #1ab394;
+  background: #941c23;
   color: #fff;
   padding: 15px 25px;
   font-size: 18px;
@@ -1460,7 +1460,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   padding: 40px 0 40px 0;
 }
 .navbar-toggler {
-  background-color: #1ab394;
+  background-color: #941c23;
   color: #fff;
   padding: 6px 12px;
   font-size: 14px;
@@ -2138,7 +2138,7 @@ button.dim:active:before {
   color: #676a6c;
 }
 .pagination .footable-page.active a {
-  background-color: #1ab394;
+  background-color: #941c23;
   border-color: #1ab394;
   color: white;
 }
@@ -4420,7 +4420,7 @@ a:focus {
   text-decoration: none;
 }
 .border-bottom {
-  border-bottom: 1px solid #e7eaec !important;
+  border-bottom: 1px solid #E7EAEC !important;
 }
 .font-bold {
   font-weight: 600;
@@ -9367,7 +9367,7 @@ body.md-skin {
 .md-skin .landing_link a,
 .md-skin .special_link a {
   color: #ffffff !important;
-}
+} 
 .md-skin.canvas-menu.mini-navbar .nav-second-level {
   background: #f8f8f9;
 }
@@ -9390,11 +9390,11 @@ body.md-skin {
 .md-skin.top-navigation .nav .open > a,
 .md-skin.top-navigation .nav .open > a:hover,
 .md-skin.top-navigation .nav .open > a:focus {
-  color: #1ab394;
+  color: #941c23;
   background: #ffffff;
 }
 .md-skin.top-navigation .nav > li.active a {
-  color: #1ab394;
+  color: #941c23;
   background: #ffffff;
 }
 .md-skin.fixed-nav #side-menu {
