@@ -31,7 +31,7 @@
             <div class="modal inmodal" id="myModal4" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content animated bounceInRight">
-                        <form class="m-t" role="form" action="" method="POST">
+                        <form class="m-t" role="form" action="" method="POST" id="formulario">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                                 <h4 class="modal-title">Nuevo Empleado</h4>
@@ -39,20 +39,20 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label><b>Nombre *</b></label>
-                                    <input type="text" name="nombre" class="form-control" required="" ></input>
+                                    <input type="text" name="nombre" class="form-control" id="nombre" ></input>
                                 </div>
                                 <div class="form-group">
                                     <label><b>Correo Electrónico *</b></label>
-                                    <input type="email" name="email" class="form-control" required="" ></input>
+                                    <input type="email" name="email" class="form-control" id="email" ></input>
                                 </div>
                                 <div class="form-group">
                                     <label><b>Sexo *</b></label>
-                                    <div class="i-checks"><label> <input type="radio" value="F" name="sexo"> <i></i> Femenino </label></div>
-                                    <div class="i-checks"><label> <input type="radio" value="M" name="sexo"> <i></i> Masculino </label></div>
+                                    <div class="i-checks"><label> <input type="radio" value="F" name="sexo" id="F" > <i></i> Femenino </label></div>
+                                    <div class="i-checks"><label> <input type="radio" value="M" name="sexo" id="M" > <i></i> Masculino </label></div>
                                 </div>
                                 <div class="form-group">
                                     <label><b>Áreas *</b></label>
-                                    <select class="form-control m-b" name="areas" required="">
+                                    <select class="form-control m-b" name="areas" id="area" >
                                         <option value="" >Seleccione</option>
                                         <?php foreach ($areas as $value) {   ?>
                                             <option value="<?=$value->id ?>" ><?=$value->nombre ?></option>
@@ -63,18 +63,19 @@
                                     <label><b>Roles *</b></label>
                                     <?php foreach ($roles as $value) {   ?>
                                         <div class="i-checks"><label>
-                                            <input type="checkbox" value="<?=$value->id ?>" name="roles[<?=$value->id ?>]"> <i></i><?=$value->nombre ?></label>
+                                            <input type="checkbox" id="roles" value="<?=$value->id ?>" name="roles[<?=$value->id ?>]"  > <i></i><?=$value->nombre ?></label>
                                         </div>
                                     <?php } ?>
                                 </div>
                                 <div class="form-group">
                                     <label><b>Descripción *</b></label>
-                                    <textarea name="descripcion" class="form-control"  rows="6" required="" ></textarea>
+                                    <textarea name="descripcion" id="descripcion" class="form-control"  rows="6"  ></textarea>
                                 </div>
                                 <div class="form-group">
                                     <div class="i-checks"><label> <input type="checkbox" value="SI" name="boletin" > <i></i> Deseo recibir boletin informativo </label></div>
                                 </div>
                             </div>
+                            <input type="hidden" name="crear" value="crear">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" name="crear" class="btn btn-primary">Guardar Empleado</button>
@@ -125,7 +126,7 @@
                                                                                 <h4 class="modal-title">Actualizar Empleado</h4>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                             <div class="form-group">
+                                                                               <div class="form-group">
                                                                                 <label><b>Nombre *</b></label>
                                                                                 <input type="text" name="nombre" class="form-control" value="<?= $value->nombre; ?>" required="" ></input>
                                                                             </div>
@@ -164,23 +165,23 @@
                                                                                 }
                                                                                 if ($checked == 'SI') { ?>
                                                                                     <div class="i-checks"><label>
-                                                                                        <input type="checkbox" value="<?=$rol->id ?>" checked  name="boletin[]"> <i></i><?=$rol->nombre ?></label>
+                                                                                        <input type="checkbox" value="<?=$rol->id ?>" checked  name="roles[<?=$rol->id ?>]"> <i></i><?=$rol->nombre ?></label>
                                                                                     </div>
                                                                                 <?php }else{ ?>
                                                                                     <div class="i-checks"><label>
-                                                                                        <input type="checkbox" value="<?=$rol->id ?>" name="boletin[]"> <i></i><?=$rol->nombre ?></label>
+                                                                                        <input type="checkbox" value="<?=$rol->id ?>" name="roles[<?=$rol->id ?>]"> <i></i><?=$rol->nombre ?></label>
                                                                                     </div>
                                                                                 <?php  } } ?>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label><b>Descripción *</b></label>
-                                                                                <textarea name="nombre" class="form-control"  rows="6" required="" ><?= $value->descripcion; ?></textarea>
+                                                                                <textarea name="descripcion" class="form-control"  rows="6" required="" ><?= $value->descripcion; ?></textarea>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <?php if ($value->boletin == 1) { ?>
-                                                                                    <div class="i-checks"><label> <input type="checkbox" checked='' value="" name="boletin" > <i></i> Deseo recibir boletin informativo </label></div>
+                                                                                    <div class="i-checks"><label> <input type="checkbox" checked='' value="SI" name="boletin" required="" > <i></i> Deseo recibir boletin informativo </label></div>
                                                                                 <?php  }else{  ?>
-                                                                                    <div class="i-checks"><label> <input type="checkbox" value="" name="boletin" > <i></i> Deseo recibir boletin informativo </label></div>
+                                                                                    <div class="i-checks"><label> <input type="checkbox" value="" name="boletin" required="" > <i></i> Deseo recibir boletin informativo </label></div>
                                                                                 <?php  } ?>
                                                                                 
                                                                             </div>
@@ -246,7 +247,6 @@
 <!-- Custom and plugin javascript -->
 <script src="<?= base_url()?>PLANTILLA/js/inspinia.js"></script>
 <script src="<?= base_url()?>PLANTILLA/js/plugins/pace/pace.min.js"></script>
-
 <!-- Data Tables -->
 <script src="<?= base_url()?>PLANTILLA/js/plugins/dataTables/datatables.min.js"></script>
 <script src="<?= base_url()?>PLANTILLA/js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
@@ -262,7 +262,7 @@ if (@$mensaje == 'success') {
     <script>
     swal({
         title: "¡Buen trabajo!",
-        text: "a'.$mensaje.'",
+        text: "'.$texto.'",
         type: "success"
         });
         </script>';
@@ -272,49 +272,92 @@ if (@$mensaje == 'success') {
         <script>
         swal({
             title: "¡ALGO PASO!",
-            text: "'.$mensaje.'",
+            text: "'.$texto.'",
             type: "error"
             });
             </script>';
         }
         ?>
-        <script>
-            $(document).ready(function(){
-                $('.dataTables-example').DataTable({
-                    pageLength: 10,
-                    responsive: true,
-                    dom: '<"html5buttons"B>lTfgitp',
-                    buttons: [
-                    { extend: 'copy'},
-                    {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
 
-                    {extend: 'print',
-                    customize: function (win){
-                        $(win.document.body).addClass('white-bg');
-                        $(win.document.body).css('font-size', '10px');
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+              document.getElementById("formulario").addEventListener('submit', validarFormulario); 
+          });
 
-                        $(win.document.body).find('table')
-                        .addClass('compact')
-                        .css('font-size', 'inherit');
-                    }
+            function validarFormulario(evento) {
+              evento.preventDefault();
+              var nombre = document.getElementById('nombre').value;
+              var email = document.getElementById('email').value;
+              var f = document.getElementById('F').checked;
+              var m = document.getElementById('M').checked;
+              var area = document.getElementById('area').value;
+              //var roles[] = document.getElementById('roles').value;
+              var descripcion = document.getElementById('descripcion').value;
+
+              if(nombre == '') {
+                alert('No has escrito nada en el nombre');
+                return;
+            }
+            if(email == '') {
+                alert('No has escrito nada en el email');
+                return;
+            }
+            if(f == false && m == false) {
+                alert('No has seleccionado el sexo');
+                return;
+            }
+            if(area == '') {
+                alert('No has seleccionado el area');
+                return;
+            }
+            // if ($('#roles')[0].checked==true) {
+            //     alert('No has escrito nada en el nombre');
+            //     return;
+            // }
+            if(descripcion == '') {
+                alert('No has escrito nada en la descripcion');
+                return;
+            }
+            this.submit();
+        }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.dataTables-example').DataTable({
+                pageLength: 10,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                { extend: 'copy'},
+                {extend: 'csv'},
+                {extend: 'excel', title: 'ExampleFile'},
+                {extend: 'pdf', title: 'ExampleFile'},
+
+                {extend: 'print',
+                customize: function (win){
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
+
+                    $(win.document.body).find('table')
+                    .addClass('compact')
+                    .css('font-size', 'inherit');
                 }
-                ]
+            }
+            ]
 
+        });
+
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
             });
+        });
+    </script>
 
-            });
-
-        </script>
-        <script>
-            $(document).ready(function () {
-                $('.i-checks').iCheck({
-                    checkboxClass: 'icheckbox_square-green',
-                    radioClass: 'iradio_square-green',
-                });
-            });
-        </script>
-
-    </body>
-    </html>
+</body>
+</html>

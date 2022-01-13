@@ -5,7 +5,8 @@ class M_Empleado extends Ci_Model{
 	}
 	private $tabla = "empleado";
 	public function insertar($datos){
-		return $this->db->insert($this->tabla,$datos);
+		$this->db->insert($this->tabla,$datos);
+		return $this->db->insert_id();
 	}
 	public function actualizar($id,$datos){
 		$this->db->where("id",$id);
